@@ -1,0 +1,8 @@
+Вынести класс Employee и классы Recruiter и Programmer в отдельный файл models.py
+Создать файл app.py, в котором будет выполняться контекст программы.
+Добавить класс Candidate с полями full_name, email, technologies, main_skill, main_skill_grade.
+Добавить класс Vacancy c полями title, main_skill, main_skill_level.
+В функции %main% в файле app создать 1 рекрутера, 2 программистов, 3 кандидатов и 2 вакансии.
+Отформатировать код согласно pep8
+Создать git репозиторий, добавить в него файл .gitignore, добавить исключения.
+Сделать push в удаленный репозиторий.
