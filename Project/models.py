@@ -1,3 +1,7 @@
+"""
+All classes
+"""
+
 from settings import date
 from settings import timedelta
 
@@ -46,21 +50,21 @@ class Employee:
 class Recruiter(Employee):
 
     def work(self):
-        return super().work()[:-1]+ ' and start to hiring.\n'
+        return super().work()[:-1] + ' and start to hiring.\n'
 
 
 class Programmer(Employee):
 
-    def __init__(self, name, sal, tech_stack = None):
+    def __init__(self, name, sal, tech_stack=None):
         super().__init__(name, sal)
-        if tech_stack != None:
+        if tech_stack is not None:
             self.tech_stack = tech_stack
 
     def __str__(self):
         return f"{super().__str__()}\nТехнологии: {self.tech_stack}"
 
     def work(self):
-        return super().work()[:-1]+ ' and start to coding.\n'
+        return super().work()[:-1] + ' and start to coding.\n'
 
     def __eq__(self, other):
         return len(self.tech_stack) == len(other.tech_stack)
@@ -84,8 +88,9 @@ class Programmer(Employee):
         stack = (set(self.tech_stack.split() + other.tech_stack.split()))
         return self.__class__("sup", 100, " ".join(stack))
 
+
 class Candidate:
-    def __init__(self, full_name, email = None, technologies, main_skill, main_skill_grade):
+    def __init__(self, full_name, technologies, main_skill, main_skill_grade, email=None):
         self.full_name = full_name
         self.technologies = technologies
         self.main_skill = main_skill
