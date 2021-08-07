@@ -2,28 +2,16 @@
 All classes
 """
 
-from settings import date
-from settings import timedelta
-
+from datetime import date
+from datetime import timedelta
 
 class Employee:
-    def __init__(self, name, sal):
+    def __init__(self, name, sal, email):
         self.name = name
         self.salary = sal
-
-    def work(self):
-        return 'I come to office.'
-
-    def chek_salary(self):
-        now = date.today()
-        start = date(now.year, now.month, 1)
-        weekend = [5, 6]
-        days = (now - start).days + 2
-        day_count = 0
-        for day in range(days):
-            if(start + timedelta(day)).weekday() not in weekend:
-                day_count += 1
-        return self.salary * day_count
+        self.email = email
+        self.validate_email()
+        self.save_email()
 
     def __str__(self):
         return f"Должность: {self.__class__.__name__} \nИмя: {self.name}"
@@ -45,6 +33,29 @@ class Employee:
 
     def __le__(self, other):
         return self.salary <= other.salary
+
+    def work(self):
+        return 'I come to office.'
+
+    def chek_salary(self):
+        now = date.today()
+        start = date(now.year, now.month, 1)
+        weekend = [5, 6]
+        days = (now - start).days + 2
+        day_count = 0
+        for day in range(days):
+            if(start + timedelta(day)).weekday() not in weekend:
+                day_count += 1
+        return self.salary * day_count
+
+    def save_email(self):
+        with open('emails.txt', 'a+') as f:
+            f.write(f'{self.email}\n')
+
+    def validate_email(self):
+        with open("emails.txt", 'r') as f:
+            if self.email in f:
+                raise ValueError('sh*t')
 
 
 class Recruiter(Employee):
@@ -96,9 +107,16 @@ class Candidate:
         self.main_skill = main_skill
         self.main_skill_grade = main_skill_grade
 
+    def work(self):
+        raise UnableToWorkException("I’m not hired yet, lol.")
+
 
 class Vacancy:
     def __init__(self, title, main_skill, main_skill_level):
         self.title = title
         self. main_skill = main_skill
         self.main_skill_level = main_skill_level
+
+
+class UnableToWorkException(Exception):
+    pass
