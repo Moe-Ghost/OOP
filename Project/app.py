@@ -8,29 +8,32 @@ from datetime import datetime
 from datetime import date
 from datetime import timedelta
 
-import models
+from employee import Employee
+from candidate import Candidate
+from recruiter import Recruiter
+from programmer import Programmer
+from vacancy import Vacancy
 
 
 if __name__ == '__main__':
     try:
-        # recruiter = Recruiter("Nikita", 2)
+        emp = Employee('Name(female)', 2, 'e')
 
-        # programmer1 = Programmer("Nataha", 4, 'py c++ c#')
-        # programmer2 = Programmer("Ihor", 3.4, 'py php js')
+        recruiter = Recruiter("Nikita", 2)
 
-        # candidate1 = Candidate('Hvan', 'c# php js', 'js', 'middle')
-        # candidate2 = Candidate('Huvan', 'py c++', 'c++', 'junior')
-        # candidate3 = Candidate('Ahvan', 'php py', 'py', 'senior')
+        programmer1 = Programmer("Nataha", 4, 'py c++ c#')
+        programmer2 = Programmer("Ihor", 3.4, 'py php js')
 
-        # vacancy1 = Vacancy('developer', 'py', 'middle')
-        # vacancy2 = Vacancy('frontend', 'js', 'senior')
+        candidate1 = Candidate('Hvan', 'c# php js', 'js', 'middle')
+        candidate2 = Candidate('Huvan', 'py c++', 'c++', 'junior')
+        candidate3 = Candidate('Ahvan', 'php py', 'py', 'senior')
 
-        emp = models.Employee('Name(female)', 2, "1")
+        vacancy1 = Vacancy('developer', 'py', 'middle')
+        vacancy2 = Vacancy('frontend', 'js', 'senior')
 
-        candidate1 = models.Candidate('Hvan', 'c# php js', 'js', 'middle')
         candidate1.work()
 
     except Exception as err:
         with open("logs.txt", 'a+') as f:
-            f.write(f"{datetime.now()}\n\n")
+            f.write(f"-----\nDate: {datetime.now()}\nError type: {err.__class__.__name__}\n")
             traceback.print_exc(file=f)
