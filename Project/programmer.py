@@ -6,7 +6,7 @@ from employee import Employee
 
 class Programmer(Employee):
 
-    def __init__(self, name, sal, email = None, tech_stack=None):
+    def __init__(self, name, sal, email=None, tech_stack=None):
         super().__init__(name, sal)
         self.tech_stack = tech_stack if tech_stack is not None else None
         self.email = email if email is not None else None

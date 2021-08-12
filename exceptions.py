@@ -1,2 +1,0 @@
-class UnableToWorkException(Exception):
-    pass

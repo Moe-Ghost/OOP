@@ -1,12 +1,9 @@
 """
 program context
 """
-import sys
 import traceback
 
 from datetime import datetime
-from datetime import date
-from datetime import timedelta
 
 from employee import Employee
 from candidate import Candidate
@@ -17,7 +14,7 @@ from vacancy import Vacancy
 
 if __name__ == '__main__':
     try:
-        emp = Employee('Name(female)', 2, 'e')
+        emp = Employee('Chi-chi-ta', 2, 'e')
 
         recruiter = Recruiter("Nikita", 2)
 
@@ -31,7 +28,9 @@ if __name__ == '__main__':
         vacancy1 = Vacancy('developer', 'py', 'middle')
         vacancy2 = Vacancy('frontend', 'js', 'senior')
 
-        candidate1.work()
+        # candidate1.work()
+        print(emp.info)
+        print(Employee.check_salary(emp.salary))
 
     except Exception as err:
         with open("logs.txt", 'a+') as f:
